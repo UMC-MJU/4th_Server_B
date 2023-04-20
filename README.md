@@ -1,4 +1,4 @@
-# 🦠 UMC MJU 4th Server B-자연
+# 💚 UMC MJU 4th Server B-자연
 [UMC MJU 4th를 위한 깃허브 사용법 및 규칙](https://makeus-challenge.notion.site/UMC-MJU-GITHUB-RULE-37679fa4f8fb4af4b2d0504b2a3e432d)
 
 <br>
@@ -28,7 +28,8 @@
 
 **Assignees(PR 담당자): 본인**
 
-**Labels: mission**
+**Labels: mission 🚀**
+
 
 
 ## ✔ Commit Message Convention
