@@ -12,6 +12,7 @@ import umc.carrot.dto.ProductResponseDto;
 import umc.carrot.dto.VisitProductRequestDto;
 import umc.carrot.dto.VisitProductResponseDto;
 import umc.carrot.error.exception.ProductNotFoundException;
+import umc.carrot.error.exception.UserNotFoundException;
 import umc.carrot.repository.ProductRepository;
 import umc.carrot.repository.UserRepository;
 
@@ -35,6 +36,9 @@ public class ProductService {
         Optional<Location> location = Optional.ofNullable(Location.builder()
                 .location_name(requestDto.getLocation())
                 .build());
+
+        //아이디가 존재하지 않을 때 예외를 발생
+        user.orElseThrow(() -> new UserNotFoundException());
 
         //물건 생성
         Product product = Product.builder()
