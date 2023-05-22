@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/umc_blog?serverTimezone=Asia/Seoul
+    username: root
+    password: choi1209
+  jpa:
+    hibernate:
+      ddl-auto: create # DDL setting (create, update..)
+    properties:
+      hibernate:
+        show_sql: true # hibernate query show
+        format_sql: true # query prettier
+        use_sql_comments: true # show query comment
+    database-platform: org.hibernate.dialect.MySQLDialect # database select setting
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace # hibernate value inner "?" showing
