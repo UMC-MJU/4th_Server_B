@@ -8,6 +8,8 @@ import umc.carrot.domain.Location;
 import umc.carrot.domain.User;
 import umc.carrot.dto.UserRequestDto;
 import umc.carrot.dto.UserResponseDto;
+import umc.carrot.error.exception.UserEmailAlreadyExistsException;
+import umc.carrot.error.exception.UserNotFoundException;
 import umc.carrot.repository.UserRepository;
 
 import java.util.List;
@@ -62,7 +64,7 @@ public class UserService {
         //이메일로 확인
         List<User> findUsers = userRepository.findAllByEmail(userRequestDto.getEmail());
         if (!findUsers.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다");
+            throw new UserEmailAlreadyExistsException();
         }
     }
 
@@ -75,6 +77,12 @@ public class UserService {
 
     public ResponseEntity<?> findOne(Long userId) {  //개인
         Optional<User> user = userRepository.findById(userId);
+
+        //아이디가 존재하지 않을 때 예외를 발생시킨다.
+        user.orElseThrow(() -> new UserNotFoundException());
+        //orElse(T other)와 달리 orElseThrow()는 매개변수로 넣은 동작은 Optional의 값이 null일 때만 동작
+        //매개변수에 Supplier가 들어가는데 아래와 같이 매개변수가 없이 무언가 반환해주는 함수를 넣으면 된다.
+
         UserResponseDto responseDto = UserResponseDto.builder()
                 .id(user.get().getId())
                 .nickname(user.get().getNickname())
