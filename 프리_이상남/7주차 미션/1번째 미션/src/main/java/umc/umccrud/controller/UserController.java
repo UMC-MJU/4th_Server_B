@@ -20,18 +20,18 @@ public class UserController {
         List<User> all = userService.findAll();
         return ResponseEntity.status(HttpStatus.CREATED).body(all);
     }
-    @PostMapping("/create/{subject}")
+    @PostMapping("/{subject}")
     public ResponseEntity userCreate(@PathVariable String subject){
         userService.save(subject);
         return ResponseEntity.status(HttpStatus.CREATED).body("만들었다.");
     }
-    @PatchMapping("/update/{id}/{subject}")
+    @PatchMapping("/{id}/{subject}")
     public ResponseEntity userUpdate(@PathVariable Long id,
                                      @PathVariable String subject){
         User updateUser = userService.update(id, subject);
         return ResponseEntity.status(HttpStatus.CREATED).body(updateUser);
     }
-    @DeleteMapping("/delete/{subject}")
+    @DeleteMapping("/{subject}")
     public ResponseEntity userDelete(@PathVariable String subject){
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.delete(subject));
     }
