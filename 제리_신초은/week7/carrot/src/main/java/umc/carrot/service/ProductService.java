@@ -11,6 +11,7 @@ import umc.carrot.dto.ProductRequestDto;
 import umc.carrot.dto.ProductResponseDto;
 import umc.carrot.dto.VisitProductRequestDto;
 import umc.carrot.dto.VisitProductResponseDto;
+import umc.carrot.error.exception.ProductNotFoundException;
 import umc.carrot.repository.ProductRepository;
 import umc.carrot.repository.UserRepository;
 
@@ -74,7 +75,7 @@ public class ProductService {
             //조회수 1 증가
             product.get().addHits();
         } else {
-            throw new IllegalStateException("일치하는 물건 ID가 없습니다.");
+            throw new ProductNotFoundException();
         }
         
         //응답 dto 생성
