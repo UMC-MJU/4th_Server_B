@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/데이터베이스_이름?serverTimezone=Asia/Seoul
+    username: 데이터베이스 유저 이름
+    password: 데이터베이스 비밀번호
+  jpa:
+    hibernate:
+      ddl-auto: update # DDL setting (create, update..)
+    properties:
+      hibernate:
+        show_sql: true # hibernate query show
+        format_sql: true # query prettier
+        use_sql_comments: true # show query comment
+    database-platform: org.hibernate.dialect.MySQLDialect # database select setting
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace # hibernate value inner "?" showing
+jwt:
+  header: Authorization
+  secret: jwt 시크릿
+  token-validity-in-seconds: 86400
